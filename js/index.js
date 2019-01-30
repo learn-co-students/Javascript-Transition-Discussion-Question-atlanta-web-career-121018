@@ -1,26 +1,23 @@
-// document.addEventListener('DOMContentLoaded', function() {
-//   const button = document.querySelector(‘#save_lincoln’)
-//   const interval = document.querySelector(‘#interval’)
-//   const parsedInterval = parseInt(interval.value)
-//   let fadeTarget = document.querySelector(‘#foreground’)
-//   let lincoln = document.querySelector(‘#background’)
+document.addEventListener('DOMContentLoaded', function() {
+  const button = document.querySelector('#save_lincoln')
+  const interval = document.querySelector('#interval')
+  const parsedInterval = parseInt(interval.value)
+  const fadeTarget = document.querySelector('#foreground')
+  const lincoln = document.querySelector('#hidden-message')
  
-//   const callback = function() {
-//     fadeTarget.src = lincoln.src;
-//     fadeIn(fadeTarget);
-//   }
-
-//   button.addEventListener(‘click’, function(event) {
-//       event.preventDefault()
-//       var opacity = 1;
-//       var timer = setInterval(function(){
-//         if(opacity < 0.1){
-//           clearInterval(timer);
-//           callback();
-//         }
-//         fadeTarget.style.opacity = opacity;
-//         opacity -=  0.1;
-//       }, parsedInterval);
-//   }
-
-// }) 
+  button.addEventListener('click', function(parsedInterval) {
+    if ( isNaN( parsedInterval ) ) {
+      parsedInterval = 100
+    }
+    var opacity = 1;
+    var timer = setInterval(function(){
+      if(opacity < 0.1){
+        clearInterval(timer);
+        fadeTarget.src = lincoln.src;
+        fadeIn(fadeTarget);
+      }
+      fadeTarget.style.opacity = opacity;
+      opacity -=  opacity * 0.01;
+    }, parsedInterval);
+  })
+}) 
